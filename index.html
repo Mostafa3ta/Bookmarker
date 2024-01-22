@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bookmarker</title>
+    <meta name="author" content="Mostafa" />
+    <meta name="description" content="Profile" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="bookmark.svg" />
+    <link rel="stylesheet" href="CSS/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="CSS/all.min.css">
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-dark">
+        <div class="container-fluid d-flex justify-content-start mb-3">
+            <i class="fa-solid fs-4 fa-bookmark"></i>
+            <a class="navbar-brand text-black px-2 fs-1" href="#home">Bookmarker</a>
+        </div>
+        <hr class="w-75 text-dark m-auto">
+    </nav>
+
+    <div id="home" class="my-5">
+        <div class="container">
+            <div class="row d-flex justify-content-center ">
+                <div class="col-md-8 col-10 text-center">
+                    <h1 class="text-dark fs-2">Bookmark Your Favourite Sites</h1>
+                </div>
+                <div class="col-md-8 col-10 my-4 p-4 form-group rounded-3 text-center">
+                    <div class="p-2">
+                        <label for="name" class="fs-5">Site Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Bookmark name . .">
+                    </div>
+                    <div class="p-2">
+                        <label for="url" class="fs-5">Site URL</label>
+                        <input type="url" class="form-control" id="url" placeholder="website URL . . ">
+                    </div>
+                    <button class="btn btn-success w-25 mt-3 addBtn">Add</button>
+                </div>
+                
+                <input type="search" onkeyup="search(this.value)" class="rounded-5 form-control w-50 mt-4" placeholder=" Search Bookmarks ">
+
+                <div class=" col-md-7 col-10 my-3 rounded-2  ">
+                    <table class="table table-dark table-striped table-hover">
+                        <tbody id="tableBody">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="JS/bootstrap.bundle.min.js"></script>
+    <script src="JS/all.js"></script>
+    <script src="JS/jquery-3.7.1.min.js"></script>
+    <script src="JS/main.js"></script>
+</body>
+
+</html>
