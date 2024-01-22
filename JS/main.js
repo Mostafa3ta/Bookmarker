@@ -1,7 +1,9 @@
 let nameInput = document.querySelector('#name');
 let urlInput = document.querySelector('#url');
-let addBtn = document.querySelector('.addBtn');
+let addBtn = document.querySelector('#addBtn');
 let tableBody = document.querySelector('#tableBody');
+let nameLabel = document.querySelector('#nameLabel');
+let urlLabel = document.querySelector('#urlLabel');
 
 let Bookmarks;
 let updateIndex = 0;
@@ -13,6 +15,48 @@ if (localStorage.getItem('Bookmarks') == null) {
     Bookmarks = JSON.parse(localStorage.getItem('Bookmarks'));
     display(Bookmarks);
 }
+
+
+let nameRegex = /^([a-zA-Z ]){1,15}$/
+function validName() {
+    if (nameRegex.test(nameInput.value)) {
+        nameLabel.innerHTML = ` <div> </div>`
+        return true;
+    } else {
+        nameLabel.innerHTML = `<div class="alert mt-1  alert-danger fst-italic text-start ">Invalid Name</div>`
+        return false;
+    }
+}
+
+
+
+// let urlRegex = /^(https:\/\/)?(www\.)?[A-Za-z0-9_\.]{1,}\.[a-z]{3}$/
+let urlRegex = /((?:(?:http?|ftp)[s]*:\/\/)?[a-z0-9-%\/\&=?\.]+\.[a-z]{2,4}\/?([^\s<>\#%"\,\{\}\\|\\\^\[\]`]+)?)/
+function validURL() {
+    if (urlRegex.test(urlInput.value)) {
+        // urlLabel.innerHTML = ` <div> </div>`
+        return true;
+    } else {
+        // urlLabel.innerHTML = `<div class="alert mt-1  alert-danger ">Invalid URL </div>`
+        return false;
+    }
+}
+
+$(nameInput).keyup(function () {
+    if (validName() && validURL()) {
+        addBtn.removeAttribute('disabled')
+    } else {
+        addBtn.disabled = 'true';
+    }
+});
+
+$(urlInput).keyup(function () {
+    if (validName() && validURL()) {
+        addBtn.removeAttribute('disabled')
+    } else {
+        addBtn.disabled = 'true';
+    }
+});
 
 
 $(addBtn).click(function () {
@@ -41,19 +85,23 @@ $(addBtn).click(function () {
 });
 
 
+
+
 function display(anyArray) {
     let marks = ``;
     for (let i = 0; i < anyArray.length; i++) {
         marks += `
         <tr>
-            <th>${anyArray[i].name}</th>
-            <td><a href="${anyArray[i].url}" target="_blank"><button class="btn btn-info">Visit</button></a></td>
-            <td><button onclick="updateBook(${i})" class="btn btn-warning">Update</button></td>
-            <td><button onclick="deleteBook(${i})" class="btn btn-danger">Delete</button></td>
+            <td class="py-3">${anyArray[i].name}</td>
+            <td class="py-3"><a href="${anyArray[i].url}" target="_blank"><button class="btn btn-sm  btn-info">Visit</button></a></td>
+            <td class="py-3"><button onclick="updateBook(${i})" class="btn btn-sm  btn-warning">Update</button></td>
+            <td class="py-3"><button onclick="deleteBook(${i})" class="btn btn-sm  btn-danger">Delete</button></td>
         </tr>
         `
+        console.log(anyArray[i].url);
     }
     tableBody.innerHTML = marks;
+
 }
 
 function deleteBook(index) {
@@ -77,7 +125,7 @@ function updateBook(index) {
 function search(term) {
     let searchBooks = [];
     for (let i = 0; i < Bookmarks.length; i++) {
-        if (Bookmarks[i].name.toLowerCase().includes(term)) {
+        if (Bookmarks[i].name.toLowerCase().includes(term.toLowerCase())) {
             searchBooks.push(Bookmarks[i])
         }
     }
