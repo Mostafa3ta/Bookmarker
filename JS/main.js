@@ -17,7 +17,7 @@ if (localStorage.getItem('Bookmarks') == null) {
 }
 
 
-let nameRegex = /^([a-zA-Z ]){1,15}$/
+let nameRegex = /^([a-zA-Zا-ي ]){1,15}$/
 function validName() {
     if (nameRegex.test(nameInput.value)) {
         nameLabel.innerHTML = ` <div> </div>`
