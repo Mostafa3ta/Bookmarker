@@ -30,14 +30,13 @@ function validName() {
 
 
 
-// let urlRegex = /^(https:\/\/)?(www\.)?[A-Za-z0-9_\.]{1,}\.[a-z]{3}$/
-let urlRegex = /((?:(?:http?|ftp)[s]*:\/\/)?[a-z0-9-%\/\&=?\.]+\.[a-z]{2,4}\/?([^\s<>\#%"\,\{\}\\|\\\^\[\]`]+)?)/
+let urlRegex = /^(http(s)?:\/\/)[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/
 function validURL() {
     if (urlRegex.test(urlInput.value)) {
-        // urlLabel.innerHTML = ` <div> </div>`
+        urlLabel.innerHTML = ` <div> </div>`
         return true;
     } else {
-        // urlLabel.innerHTML = `<div class="alert mt-1  alert-danger ">Invalid URL </div>`
+        urlLabel.innerHTML = `<div class="alert mt-1  alert-danger ">Invalid URL </div>`
         return false;
     }
 }
