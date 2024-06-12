@@ -23,7 +23,7 @@ function validName() {
         nameLabel.innerHTML = ` <div> </div>`
         return true;
     } else {
-        nameLabel.innerHTML = `<div class="alert mt-1  alert-danger fst-italic text-start ">Invalid Name</div>`
+        nameLabel.innerHTML = `<div class="mt-1 form-control bg-danger-subtle text-muted text-start">Invalid name</div>`
         return false;
     }
 }
@@ -36,7 +36,7 @@ function validURL() {
         urlLabel.innerHTML = ` <div> </div>`
         return true;
     } else {
-        urlLabel.innerHTML = `<div class="alert mt-1  alert-danger ">Invalid URL </div>`
+        urlLabel.innerHTML = `<div class="mt-1 form-control bg-danger-subtle text-muted text-start">Invalid URL </div>`
         return false;
     }
 }
